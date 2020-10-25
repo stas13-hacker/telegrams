@@ -26,7 +26,7 @@ int login_true = 0;
 
 void read_all_accounts()
 {
-	FILE* users = fopen("C:\\Users\\mrrim\\source\\repos\\telegram\\telegram\\TEXT.txt", "r");
+	FILE* users = fopen("C:\\Users\\mrrim\\source\\repos\\telegrams\\telegram\\TEXT.txt", "r");
 
 	int name_password_i = 0;
 
@@ -201,7 +201,7 @@ void registration()
 	ARCHIVE.ACCOUNTS[ARCHIVE.counter_accounts] = new_account;
 	ARCHIVE.counter_accounts++;
 
-	FILE* users = fopen("C:\\Users\\mrrim\\source\\repos\\telegram\\telegram\\TEXT.txt", "a");
+	FILE* users = fopen("C:\\Users\\mrrim\\source\\repos\\telegrams\\telegram\\TEXT.txt", "a");
 
 	fprintf(users, "%s:%s;", new_account.name , new_account.password);
 
@@ -261,7 +261,9 @@ void add_friend()
 	printf("Input your friend name: ");
 	scanf("%s", name_friend);
 
-	FILE* file_of_friend = fopen(ARCHIVE.ACCOUNTS[correct].name, "a");
+	char friends[60];
+	add_friend_to_name(ARCHIVE.ACCOUNTS[correct].name, friends);
+	FILE* file_of_friend = fopen(friends, "a");
 
 	for (int i = 0; i < ARCHIVE.counter_accounts; i++)
 	{
@@ -286,7 +288,10 @@ void add_friend()
 
 void See_friend()
 {
-	FILE* file_of_friend = fopen(ARCHIVE.ACCOUNTS[correct].name, "r");
+	char friends[60];
+
+	add_friend_to_name(ARCHIVE.ACCOUNTS[correct].name, friends);
+	FILE* file_of_friend = fopen(friends, "r");
 	
 	char text_friend = ':';
 
