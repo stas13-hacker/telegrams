@@ -295,19 +295,36 @@ void See_friend()
 	
 	char text_friend = ':';
 
+	printf("My friends\n");
+	printf("[");
+
 	while (text_friend != EOF)
 	{
-		if (text_friend != EOF)
+		
+		if (text_friend != EOF && ':')
 		{
 			text_friend = fgetc(file_of_friend);
-			printf("%c", text_friend);
-			
+
+			if (text_friend != ':')
+			{
+				printf("%c", text_friend);
+			}
+		}
+		if (text_friend == ':')
+		{
+			printf("]\n");
+		}
+		if (text_friend == ':')
+		{
+			printf("[");
 		}
 		else if (text_friend == EOF)
 		{
 			break;
 		}
 	}
+	Sleep(5000);
+	system("cls");
 }
 
 void send_message()
